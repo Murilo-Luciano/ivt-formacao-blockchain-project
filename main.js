@@ -1,7 +1,7 @@
 const SHA256 = require('crypto-js/sha256')
 
 class Block{
-    constructor(index, previousHash = '', data, timestamp){
+    constructor(index = '', previousHash = '', data, timestamp){
         this.index = index
         this.timestamp = timestamp
         this.data = data
@@ -38,11 +38,13 @@ class Blockchain{
     addBlock(newBlock){
         // if chain is empty => Transform newBlock into GenesisBlock (Previous Hash = 0)
         if(this.chain.length == 0){
+            newBlock.index = this.chain.length
             newBlock.previousHash = '0'
             newBlock.hash = newBlock.calculateHash()
             this.chain.push(newBlock)
         }
         else{
+            newBlock.index = this.chain.length
             newBlock.previousHash = this.getLatestBlock().hash
             newBlock.mineBlock(this.difficulty)
             this.chain.push(newBlock)
