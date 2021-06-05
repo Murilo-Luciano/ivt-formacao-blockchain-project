@@ -14,12 +14,21 @@ class Block{
         return SHA256(this.previousHash + this.nonce + JSON.stringify(this.data) + this.timestamp).toString()
     }
 
+    mineBlock(difficulty){
+        while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")){
+            this.nonce++
+            this.hash = this.calculateHash()
+        }
+
+        console.log("Block mined => " + this.hash)
+    }
 
 }
 
 class Blockchain{
     constructor(){
-    this.chain = [/*empty*/]
+        this.chain = [/*empty*/]
+        this.difficulty = 4 // DIFFICULTY LEVEL (Should be variable)
     }
 
     getLatestBlock(){
@@ -35,7 +44,7 @@ class Blockchain{
         }
         else{
             newBlock.previousHash = this.getLatestBlock().hash
-            newBlock.hash = newBlock.calculateHash()
+            newBlock.mineBlock(this.difficulty)
             this.chain.push(newBlock)
         }
 
