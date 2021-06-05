@@ -1,0 +1,22 @@
+{
+  "name": "blockchain-git",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Murilo-Luciano/ivt-formacao-blockchain-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Murilo-Luciano/ivt-formacao-blockchain-project/issues"
+  },
+  "homepage": "https://github.com/Murilo-Luciano/ivt-formacao-blockchain-project#readme",
+  "devDependencies": {
+    "crypto-js": "^4.0.0"
+  }
+}
