@@ -11,8 +11,51 @@ class Block{
     }
 
     calculateHash(){
-        return SHA256(this.previousHash + this.nonce + JSON.stringify(this.data) + this.timestamp)
+        return SHA256(this.previousHash + this.nonce + JSON.stringify(this.data) + this.timestamp).toString()
     }
 
 
+}
+
+class Blockchain{
+    constructor(){
+    this.chain = [/*empty*/]
+    }
+
+    getLatestBlock(){
+        return this.chain[this.chain.length - 1]
+    }
+
+    addBlock(newBlock){
+        // if chain is empty => Transform newBlock into GenesisBlock (Previous Hash = 0)
+        if(this.chain.length == 0){
+            newBlock.previousHash = '0'
+            newBlock.hash = newBlock.calculateHash()
+            this.chain.push(newBlock)
+        }
+        else{
+            newBlock.previousHash = this.getLatestBlock().hash
+            newBlock.hash = newBlock.calculateHash()
+            this.chain.push(newBlock)
+        }
+
+    }
+
+    chainValidation(){
+        // Go through the chain and checks each hash integrity
+        for(let i = 1; i < this.chain.length; i++){
+            const currentBlock = this.chain[i]
+            const previousBlock = this.chain[i - 1]
+
+            if(currentBlock.hash !== currentBlock.calculateHash()){
+                return false
+            }
+
+            if(currentBlock.previousHash !== previousBlock.hash){
+                return false
+            }
+
+        }
+        return true
+    }
 }
