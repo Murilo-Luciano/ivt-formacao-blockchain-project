@@ -70,3 +70,26 @@ class Blockchain{
         return true
     }
 }
+
+/* CONSOLE.LOGs       APAGAR ANTES DO COMMIT        */
+
+let runtest = new Blockchain()
+console.log("Mining Block 1.....")
+runtest.addBlock(new Block(1, "02/25/2021", { amount: 200 }))
+
+console.log("Mining Block 2.....")
+runtest.addBlock(new Block(2, "03/10/2021", { amount: 26 }))
+
+
+console.log("Mining Block 3.....")
+runtest.addBlock(new Block(3, "03/11/2021", { amount: 52 }))
+console.log("Mining Block 4.....")
+runtest.addBlock(new Block(4, "03/12/2021", { amount: 68 }))
+console.log("Mining Block 5.....")
+runtest.addBlock(new Block(5, "03/13/2021", { amount: 78 }))
+console.log("Mining Block 6.....")
+runtest.addBlock(new Block(6, "03/14/2021", { amount: 44 }))
+
+
+
+console.log(JSON.stringify(runtest, null, 4))
