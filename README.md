@@ -1,6 +1,8 @@
 # IVT-formacao-blockchain-project
 ![Badge](https://img.shields.io/static/v1?label=Investtools&message=Blockchain&color=green)
+
 ![Badge](https://img.shields.io/static/v1?label=Tests&message=passing&color=mediumgreen)
+![Badge](https://img.shields.io/static/v1?label=License&message=MIT&color=mediumgreen)
 ![Badge](https://img.shields.io/static/v1?label=npm&message=6.14.13&color=blue) ![Badge](https://img.shields.io/static/v1?label=node&message=v14.17.0&color=blue) 
 
 ## Description
@@ -14,6 +16,7 @@ In order to run the application, first start the node environment by running  `n
 ## Scripts
 
 `npm run dev` - Runs a development server environment that starts **main.js**, in node
+
 `npm run test` - Runs the test suite environment that runs **test/*.js**
 
 ## Features
@@ -29,4 +32,5 @@ In order to run the application, first start the node environment by running  `n
 
 ### Authors
 Heitor Magalhaes Vieira
+
 Murillo Luciano
