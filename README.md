@@ -31,6 +31,6 @@ In order to run the application, first start the node environment by running  `n
 - [x] Test suite
 
 ### Authors
-Heitor Magalhaes Vieira
+[Heitor Magalhaes Vieira](https://github.com/VieiraHeitor)
 
-Murillo Luciano
+[Murillo Luciano Silva de Oliveira](https://github.com/Murilo-Luciano)
