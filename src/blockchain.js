@@ -8,12 +8,19 @@ class Blockchain{
         return this.chain[this.chain.length - 1]
     }
 
-    addBlock(newBlock){
+    addBlock(newBlock,dif=0){
         // if chain is empty => Transform newBlock into GenesisBlock (Previous Hash = 0)
         if(this.chain.length == 0){
             newBlock.index = this.chain.length
             newBlock.previousHash = '0'
             newBlock.hash = newBlock.calculateHash()
+            this.chain.push(newBlock)
+        }
+        else if(dif !=0){
+            newBlock.index = this.chain.length
+            newBlock.previousHash = this.getLatestBlock().hash
+            this.difficulty = dif
+            newBlock.mineBlock(this.difficulty)
             this.chain.push(newBlock)
         }
         else{
