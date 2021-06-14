@@ -33,4 +33,4 @@ In order to run the application, first start the node environment by running  `n
 ### Authors
 [Heitor Magalhaes Vieira](https://github.com/VieiraHeitor)
 
-[Murillo Luciano Silva de Oliveira](https://github.com/Murilo-Luciano)
+[Murilo Luciano Silva de Oliveira](https://github.com/Murilo-Luciano)
