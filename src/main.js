@@ -25,6 +25,8 @@ runtest.addBlock(new Block("03/14/2021", { amount: 44 }))
 console.log("Mining Block 7.....")
 runtest.addBlock(new Block("03/14/2021", { amount: 44 }),1)
 
+console.log(runtest.chain.length)
+
 
 console.log("\n*****BLOCKCHAIN LOG*****")
 console.log(JSON.stringify(runtest, null, 5))
