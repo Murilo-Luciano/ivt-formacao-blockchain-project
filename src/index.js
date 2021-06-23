@@ -2,7 +2,7 @@
 //const Blockchain = require("./blockchain")
 import Blockchain from './blockchain'
 import Block from './block'
-
+import css from "./style.css";
 
 const table = document.getElementById("mytable")
 

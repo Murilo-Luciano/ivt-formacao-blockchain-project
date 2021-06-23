@@ -13,9 +13,10 @@
 /*!**********************!*\
   !*** ./src/block.js ***!
   \**********************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("const SHA256 = __webpack_require__(/*! crypto-js/sha256 */ \"./node_modules/crypto-js/sha256.js\");\n\nclass Block {\n  constructor(index = '', previousHash = '', data, timestamp) {\n    this.index = index;\n    this.timestamp = timestamp;\n    this.data = data;\n    this.previousHash = previousHash;\n    this.hash = this.calculateHash();\n    this.nonce = 0;\n  }\n\n  calculateHash() {\n    return SHA256(this.previousHash + this.nonce + JSON.stringify(this.data) + this.timestamp).toString();\n  }\n\n  mineBlock(difficulty) {\n    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(\"0\")) {\n      this.nonce++;\n      this.hash = this.calculateHash();\n    }\n\n    console.log(\"Block mined => \" + this.hash);\n    return this.hash;\n  }\n\n}\n\nmodule.exports = Block;\n\n//# sourceURL=webpack://blockchain-git/./src/block.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst SHA256 = __webpack_require__(/*! crypto-js/sha256 */ \"./node_modules/crypto-js/sha256.js\");\n\nclass Block {\n  constructor(index = '', previousHash = '', data, timestamp) {\n    this.index = index;\n    this.timestamp = timestamp;\n    this.data = data;\n    this.previousHash = previousHash;\n    this.hash = this.calculateHash();\n    this.nonce = 0;\n  }\n\n  calculateHash() {\n    return SHA256(this.previousHash + this.nonce + JSON.stringify(this.data) + this.timestamp).toString();\n  }\n\n  mineBlock(difficulty) {\n    while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join(\"0\")) {\n      this.nonce++;\n      this.hash = this.calculateHash();\n    }\n\n    console.log(\"Block mined => \" + this.hash);\n    return this.hash;\n  }\n\n} //module.exports = Block\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Block);\n\n//# sourceURL=webpack://blockchain-git/./src/block.js?");
 
 /***/ }),
 
@@ -23,9 +24,10 @@ eval("const SHA256 = __webpack_require__(/*! crypto-js/sha256 */ \"./node_module
 /*!***************************!*\
   !*** ./src/blockchain.js ***!
   \***************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("class Blockchain {\n  constructor() {\n    this.chain = [\n      /*empty*/\n    ];\n    this.difficulty = null; // DIFFICULTY LEVEL (Should be variable)\n  }\n\n  getLatestBlock() {\n    return this.chain[this.chain.length - 1];\n  }\n\n  addBlock(newBlock, dif = 0) {\n    // if chain is empty => Transform newBlock into GenesisBlock (Previous Hash = 0)\n    if (this.chain.length == 0) {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = '0';\n      newBlock.hash = newBlock.calculateHash();\n      this.chain.push(newBlock);\n    } else if (dif != 0) {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = this.getLatestBlock().hash;\n      this.difficulty = dif;\n      newBlock.mineBlock(this.difficulty);\n      this.chain.push(newBlock);\n    } else {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = this.getLatestBlock().hash;\n      this.difficulty = this.chain.length;\n      newBlock.mineBlock(this.difficulty);\n      this.chain.push(newBlock);\n    }\n  }\n\n  chainValidation() {\n    // Go through the chain and checks each hash integrity\n    for (let i = 1; i < this.chain.length; i++) {\n      const currentBlock = this.chain[i];\n      const previousBlock = this.chain[i - 1];\n\n      if (currentBlock.hash !== currentBlock.calculateHash()) {\n        return false;\n      }\n\n      if (currentBlock.previousHash !== previousBlock.hash) {\n        return false;\n      }\n    }\n\n    return true;\n  }\n\n}\n\nmodule.exports = Blockchain;\n\n//# sourceURL=webpack://blockchain-git/./src/blockchain.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Blockchain {\n  constructor() {\n    this.chain = [\n      /*empty*/\n    ];\n    this.difficulty = null; // DIFFICULTY LEVEL (Should be variable)\n\n    this.lastHash = null;\n  }\n\n  getLatestBlock() {\n    return this.chain[this.chain.length - 1];\n  }\n\n  addBlock(newBlock, dif = 0) {\n    // if chain is empty => Transform newBlock into GenesisBlock (Previous Hash = 0)\n    if (this.chain.length == 0) {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = '0';\n      newBlock.hash = newBlock.calculateHash();\n      this.lastHash = newBlock.hash;\n      this.chain.push(newBlock);\n    } else if (dif != 0) {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = this.getLatestBlock().hash;\n      this.difficulty = dif;\n      newBlock.mineBlock(this.difficulty);\n      this.lastHash = newBlock.hash;\n      this.chain.push(newBlock);\n    } else {\n      newBlock.index = this.chain.length;\n      newBlock.previousHash = this.getLatestBlock().hash;\n      this.difficulty = this.chain.length;\n      newBlock.mineBlock(this.difficulty);\n      this.lastHash = newBlock.hash;\n      this.chain.push(newBlock);\n    }\n  }\n\n  chainValidation() {\n    // Go through the chain and checks each hash integrity\n    for (let i = 1; i < this.chain.length; i++) {\n      const currentBlock = this.chain[i];\n      const previousBlock = this.chain[i - 1];\n\n      if (currentBlock.hash !== currentBlock.calculateHash()) {\n        return false;\n      }\n\n      if (currentBlock.previousHash !== previousBlock.hash) {\n        return false;\n      }\n    }\n\n    return true;\n  }\n\n} //module.exports = Blockchain\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Blockchain);\n\n//# sourceURL=webpack://blockchain-git/./src/blockchain.js?");
 
 /***/ }),
 
@@ -33,9 +35,10 @@ eval("class Blockchain {\n  constructor() {\n    this.chain = [\n      /*empty*/
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("const table = document.getElementById(\"mytable\");\n\nconst Block = __webpack_require__(/*! ./block */ \"./src/block.js\");\n\nconst Blockchain = __webpack_require__(/*! ./blockchain */ \"./src/blockchain.js\");\n\nlet myblockchain = new Blockchain();\n\ndocument.getElementById(\"myform\").onsubmit = function (event) {\n  event.preventDefault();\n  var date = document.getElementById(\"date\").value;\n  var ammount = document.getElementById(\"ammount\").value;\n  const newrow = document.createElement(\"tr\");\n  newrow.innerHTML = `\n    <tr>\n        <td>${date}</td>\n        <td>${ammount}</td>\n    </tr>`;\n  table.appendChild(newrow);\n  document.getElementById(\"date\").value = \"\";\n  document.getElementById(\"ammount\").value = \"\";\n};\n\n//# sourceURL=webpack://blockchain-git/./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _blockchain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blockchain */ \"./src/blockchain.js\");\n/* harmony import */ var _block__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block */ \"./src/block.js\");\n//const Block = require(\"./block\")\n//const Blockchain = require(\"./blockchain\")\n\n\nconst table = document.getElementById(\"mytable\");\nlet myblockchain = new _blockchain__WEBPACK_IMPORTED_MODULE_0__.default();\n\ndocument.getElementById(\"myform\").onsubmit = function (event) {\n  event.preventDefault();\n  var date = document.getElementById(\"date\").value;\n  var amountnum = document.getElementById(\"amount\").value;\n  myblockchain.addBlock(new _block__WEBPACK_IMPORTED_MODULE_1__.default(date, {\n    amount: amountnum\n  }));\n  const newrow = document.createElement(\"tr\");\n  newrow.innerHTML = `\n    <tr>\n        <td>${myblockchain.chain.length}}</td>\n        <td>${date}</td>\n        <td>${amountnum}</td>\n        <td>${myblockchain.lastHash}</td>\n        <td>${myblockchain.difficulty}</td>\n    </tr>`;\n  table.appendChild(newrow);\n  document.getElementById(\"date\").value = \"\";\n  document.getElementById(\"amount\").value = \"\";\n};\n\n//# sourceURL=webpack://blockchain-git/./src/index.js?");
 
 /***/ }),
 
@@ -86,6 +89,18 @@ eval(";(function (root, factory) {\n\tif (true) {\n\t\t// CommonJS\n\t\tmodule.e
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -96,6 +111,22 @@ eval(";(function (root, factory) {\n\tif (true) {\n\t\t// CommonJS\n\t\tmodule.e
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/

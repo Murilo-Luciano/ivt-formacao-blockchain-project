@@ -24,7 +24,8 @@ module.exports = {
     modules: [ "node_modules", srcDir ],
     alias: {
       "react-dom": "@hot-loader/react-dom"
-    }
+    },
+    fallback: { "crypto": false }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -51,6 +52,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: "babel-loader"
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       }
     ]
   },
