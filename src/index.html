@@ -7,24 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form id="myform">
-        <label for="date">Date:</label><br>
-        <input type="text" id="date" name="date"><br>
-        <label for="amount">Amount:</label><br>
-        <input type="text" id="amount" name="amount"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="myconteiner">
+        <form id="myform">
+            <label for="date">Date:</label><br>
+            <input class="myinput" type="date" id="date" name="date"><br>
+            <label for="amount">Amount:</label><br>
+            <input class="myinput" type="text" id="amount" name="amount"><br><br>
+            <input type="submit" value="Submit">
+        </form>
 
-    <table class="mytable" id="mytable" style="width:30%">
-        <tr>
-            <th>Index</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Hash</th>
-            <th>Diff</th>
-        </tr>
-    </table>
-
+        <table class="mytable" id="mytable" style="width:30%">
+            <tr>
+                <th>Index</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Hash</th>
+                <th>Diff</th>
+            </tr>
+        </table>
+    </div>
     
 </body>
 </html>

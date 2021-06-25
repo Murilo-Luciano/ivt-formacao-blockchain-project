@@ -14,16 +14,16 @@ document.getElementById("myform").onsubmit = function(event){
     event.preventDefault()
 
     var date = document.getElementById("date").value
-    var amountnum = document.getElementById("amount").value
+    var amountNum = document.getElementById("amount").value
 
-    myblockchain.addBlock(new Block(date, { amount: amountnum }))
+    myblockchain.addBlock(new Block(date, { amount: amountNum }))
 
     const newrow = document.createElement("tr")
     newrow.innerHTML = `
     <tr>
-        <td>${myblockchain.chain.length}}</td>
+        <td>${myblockchain.chain.length}</td>
         <td>${date}</td>
-        <td>${amountnum}</td>
+        <td>${amountNum}</td>
         <td>${myblockchain.lastHash}</td>
         <td>${myblockchain.difficulty}</td>
     </tr>`
