@@ -41,3 +41,18 @@ tr:hover {
     background-color: white;
     box-shadow: 10px 10px 5px #aaaaaa;
 }
+
+.mybtn{
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.mybtn:hover{
+    background-color: black;
+    color: white;
+}
