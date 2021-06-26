@@ -16,6 +16,11 @@ document.getElementById("myform").onsubmit = function(event){
     var date = document.getElementById("date").value
     var amountNum = document.getElementById("amount").value
 
+    if(date =="" || amount==""){
+        alert("No fields can be empty");
+        return false;
+    }
+
     myblockchain.addBlock(new Block(date, { amount: amountNum }))
 
     const newrow = document.createElement("tr")
