@@ -1,0 +1,92 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+th, td{
+    padding: 15px;
+    text-align: center;
+}
+th, td {
+    border-bottom: 1px none #ddd;
+}
+tr:hover {
+    background-color: #f5f5f5;
+}
+#mytitle{
+    font-weight: bold;
+    margin-left: 5%;
+}
+#myform{
+    margin-top: 16px;
+}
+.mytable{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    overflow:hidden;
+    border: none;
+    border-radius: 2.5%;
+    min-width: 90%;
+}
+.myForm{
+    margin-left: 5%;
+}
+.myinput {
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 30%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px none #ddd;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px;
+	height: 45px;
+}
+.myinput:focus{
+    border: 1px solid #ccc!important;
+    border-radius: 16px;
+    background-color: #f5f5f5;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.myconteiner{
+    max-width: 85%;
+    max-height: 900px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    padding: 2.5% 10px 20px 10px;
+    border: 1px none #BFBFBF;
+    border-radius: 0.5%;
+    background-color: white;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;    
+}
+
+.mybtn{
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.mybtn:hover{
+    background-color: black;
+    color: white;
+}
+    
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');

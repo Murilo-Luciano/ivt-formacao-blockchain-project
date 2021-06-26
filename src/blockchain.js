@@ -2,6 +2,7 @@ class Blockchain{
     constructor(){
         this.chain = [/*empty*/]
         this.difficulty = null // DIFFICULTY LEVEL (Should be variable)
+        this.lastHash = null
     }
 
     getLatestBlock(){
@@ -14,6 +15,7 @@ class Blockchain{
             newBlock.index = this.chain.length
             newBlock.previousHash = '0'
             newBlock.hash = newBlock.calculateHash()
+            this.lastHash = newBlock.hash
             this.chain.push(newBlock)
         }
         else if(dif !=0){
@@ -21,6 +23,7 @@ class Blockchain{
             newBlock.previousHash = this.getLatestBlock().hash
             this.difficulty = dif
             newBlock.mineBlock(this.difficulty)
+            this.lastHash = newBlock.hash
             this.chain.push(newBlock)
         }
         else{
@@ -28,6 +31,7 @@ class Blockchain{
             newBlock.previousHash = this.getLatestBlock().hash
             this.difficulty = this.chain.length
             newBlock.mineBlock(this.difficulty)
+            this.lastHash = newBlock.hash
             this.chain.push(newBlock)
         }
 
@@ -51,4 +55,5 @@ class Blockchain{
         return true
     }
 }
-module.exports = Blockchain
+//module.exports = Blockchain
+export default Blockchain
