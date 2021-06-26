@@ -15,8 +15,8 @@ document.getElementById("myform").onsubmit = function(event){
 
     var date = document.getElementById("date").value
     var amountNum = document.getElementById("amount").value
-
-    if(date =="" || amount==""){
+    
+    if(date =="" || amountNum==""){
         alert("No fields can be empty");
         return false;
     }
