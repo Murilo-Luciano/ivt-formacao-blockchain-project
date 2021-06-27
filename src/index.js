@@ -18,7 +18,7 @@ document.getElementById("myform").onsubmit = function(event){
     
     if(date =="" || amountNum==""){
         alert("No fields can be empty");
-        return false;
+        return ;
     }
 
     myblockchain.addBlock(new Block(date, { amount: amountNum }))
