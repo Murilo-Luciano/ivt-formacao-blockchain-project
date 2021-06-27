@@ -28,7 +28,7 @@ document.getElementById("myform").onsubmit = function(event){
     <tr>
         <td>${myblockchain.chain.length}</td>
         <td>${date}</td>
-        <td>${amountNum}</td>
+        <td> $ ${amountNum}</td>
         <td>${myblockchain.lastHash}</td>
         <td>${myblockchain.difficulty}</td>
     </tr>`
