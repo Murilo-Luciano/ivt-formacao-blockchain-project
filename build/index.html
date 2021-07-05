@@ -4,27 +4,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../src/styles.css">
+    <link rel="stylesheet" href="styles.css">
 <script defer src="bundle.js"></script></head>
 <body>
-    <form id="myform">
-        <label for="date">Date:</label><br>
-        <input type="text" id="date" name="date"><br>
-        <label for="amount">Amount:</label><br>
-        <input type="text" id="amount" name="amount"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="myconteiner" id="react-root-test">
+        <label id="mytitle">Insira seu bloco</label>
+        <form id="myform" class="myForm">
+            <label for="date">Date:</label><br>
+            <input class="myinput input-container" type="date" placeholder="dd-mm-yyyy" id="date" name="date"><br>
+            <label for="amount">Amount:</label><br>
+            <input class="myinput" type="number" step="0.01" id="amount" placeholder="$" name="amount"><br><br>
+            <input class="mybtn" type="submit" value="Submit">
+        </form>
 
-    <table id="mytable" style="width:30%">
-        <tr>
-            <th>Index</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Hash</th>
-            <th>Diff</th>
-        </tr>
-    </table>
-
+        <table class="mytable" id="mytable" style="width:30%">
+            <tr>
+                <th>Index</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Hash</th>
+                <th>Diff</th>
+            </tr>
+        </table>
+    </div>
     
 </body>
 </html>
