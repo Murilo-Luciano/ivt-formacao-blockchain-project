@@ -13,7 +13,7 @@ module.exports = {
   mode: process.env.NODE_ENV || "development",
   target: "web",
   entry: {
-    main: entry // ./src/index.js
+    main: entry // ./src/index.jsx
   },
   output: {
     filename: "bundle.js",
