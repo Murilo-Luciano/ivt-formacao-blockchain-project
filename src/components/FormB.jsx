@@ -21,7 +21,11 @@ const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
             return ;
         }
 
-        myBlockchain.addBlock(new Block(timestamp,{ amount: amountNum })) 
+        myBlockchain.addBlock(new Block(timestamp,{ amount: amountNum }))
+        
+        setData('')
+        setTimestamp('')
+        
     }
 
     return(
@@ -30,9 +34,9 @@ const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
                 <label className={styles.myTitle} id="mytitle">Insira seu bloco</label>
                     <form id="myform" className={styles.myForm}>
                     <label>Date:</label><br/>
-                    <input className={styles.myinput, styles.inputContainer} onChange={(evt)=> setTimestamp(evt.target.data)} type="date" placeholder="dd-mm-yyyy" id="date" name="date"/><br></br>
+                    <input className={styles.myinput, styles.inputContainer} value={timestamp} onChange={(evt)=> setTimestamp(evt.target.data)} type="date" placeholder="dd-mm-yyyy" id="date" name="date"/><br></br>
                     <label>Amount:</label><br/>
-                    <input className={styles.myinput, styles.inputContainer}  onChange={(evt)=> setData(evt.target.amount)} type="number" step="0.01" id="amount" placeholder="$" name="amount"/><br></br>
+                    <input className={styles.myinput, styles.inputContainer} value={data}  onChange={(evt)=> setData(evt.target.amount)} type="number" step="0.01" id="amount" placeholder="$" name="amount"/><br></br>
                     <input className={styles.mybtn} type="submit" onClick={(evt)=> {
                         createBlock(data, timestamp)
                         evt.preventDefault()
