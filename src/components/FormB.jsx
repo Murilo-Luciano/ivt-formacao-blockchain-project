@@ -3,25 +3,18 @@ import { connect } from "react-redux"
 import styles from '../assets/style.module.css';
 import BlockchainDuck from '../ducks/BlockchainDuck';
 import PropTypes from "prop-types";
-import BlockChain from "../services/blockchain";
-import Block from "../services/block";
 
-const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
+const FormB = ({addBlockchain}) => {
     const [data, setData] = React.useState("")
     const [timestamp, setTimestamp] = React.useState("")
-
-    let myBlockchain = new BlockChain()
     
-    const createBlock = (data,timestamp) =>{
-        var date = timestamp
-        var amountNum = data
-    
-        if(date =="" || amountNum==""){
+    const createBlock = ( data,timestamp) =>{
+        if(data =="" || timestamp==""){
             alert("No fields can be empty");
             return ;
         }
-
-        myBlockchain.addBlock(new Block(timestamp,{ amount: amountNum })) 
+        console.log('states', data, timestamp)
+        addBlockchain({data,timestamp})
     }
 
     return(
@@ -30,10 +23,26 @@ const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
                 <label className={styles.myTitle} id="mytitle">Insira seu bloco</label>
                     <form id="myform" className={styles.myForm}>
                     <label>Date:</label><br/>
-                    <input className={styles.myinput, styles.inputContainer} onChange={(evt)=> setTimestamp(evt.target.data)} type="date" placeholder="dd-mm-yyyy" id="date" name="date"/><br></br>
+                    <input 
+                        className={styles.myinput, styles.inputContainer} 
+                        onChange={(evt)=> setTimestamp(evt.target.value)} 
+                        type="date" 
+                        placeholder="dd-mm-yyyy" 
+                        id="date" 
+                        name="date"/><br></br>
                     <label>Amount:</label><br/>
-                    <input className={styles.myinput, styles.inputContainer}  onChange={(evt)=> setData(evt.target.amount)} type="number" step="0.01" id="amount" placeholder="$" name="amount"/><br></br>
-                    <input className={styles.mybtn} type="submit" onClick={()=> createBlock(data, timestamp, )}/>
+                    <input 
+                        className={styles.myinput, styles.inputContainer}  
+                        onChange={(evt)=> setData(evt.target.value)} 
+                        type="number" 
+                        step="0.01" 
+                        id="amount" 
+                        placeholder="$" 
+                        name="amount"/><br></br>
+                    <button className={styles.mybtn}  onClick={(evt)=> {
+                        evt.preventDefault()
+                        createBlock(data, timestamp)
+                        }}/>
                 </form>
             </div>
         </>
@@ -41,24 +50,20 @@ const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
 }
 
 FormB.propTypes = {
-    addBlock: PropTypes.func
+    addBlockchain: PropTypes.func
 }
 
 FormB.defaultProps = {
-    blockchain: {},
-    addBlockchain: ()=>undefined  
+    blockchain: {},  
 }
 
-const MapStatetoProps = (store) =>({
-    blockchain: store.blockchain.blockchain
+const MapStatetoProps = () =>({
 })
 
 const MapDispatchtoProps = (dispatch) =>({
-    addBlockchain: ({chain,difficulty, lastHash}) => dispatch(
-        BlockchainDuck.creators.addBlockchain(chain,difficulty, lastHash)
+    addBlockchain: ({timestamp,data}) => dispatch(
+        BlockchainDuck.creators.addBlockchain({timestamp,data})
     )
 })
-
-
 
 export default connect(MapStatetoProps, MapDispatchtoProps)(FormB);
