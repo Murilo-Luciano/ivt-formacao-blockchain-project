@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux"
 
-import blockchainDuck from "./BlockchainDuck"
-import blockDuck from "./BlockDuck"
+import blockchainDuck from "./blockchainDuck"
+import blockDuck from "./blockDuck"
 
 
 const reducers = combineReducers({
