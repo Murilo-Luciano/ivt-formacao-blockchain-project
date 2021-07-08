@@ -8,7 +8,7 @@ const webpack = require("webpack")
 const srcDir        = path.join(__dirname,"./src")
 const distDir       = path.join(__dirname,"./build") // pode usar a dist
 const entry         = path.join(srcDir, "index.jsx" )
-const srcHtmlLayout = path.join(__dirname, "./src/index.html")
+const srcHtmlLayout = path.join(__dirname, "./public/index.html")
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   target: "web",

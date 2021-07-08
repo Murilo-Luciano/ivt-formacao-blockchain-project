@@ -1,16 +1,14 @@
 import React from "react"
+import FormB from './FormB.jsx'
+import TableB from './TableB.jsx'
 
-import Form from './form.jsx'
-import List from './table.jsx'
-
-const App = (props) => {
+const App = () => {
   return (
-    <React.Fragment> 
-      <Form/>
-      <List/>
-    </React.Fragment>
+    <> 
+      <FormB/>
+      <TableB/>
+    </>
   )
 }
 
 export default App
-

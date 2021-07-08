@@ -19,7 +19,7 @@ export default new Duck({
     }
   },
   creators: (duck) => ({
-    addBlock: (chain, difficulty,lastHash) => ({
+    addBlockchain: (chain, difficulty,lastHash) => ({
       type: duck.types.ADD_BLOCKCHAIN, chain, difficulty,lastHash
     })
   })
