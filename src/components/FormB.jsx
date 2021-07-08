@@ -33,7 +33,10 @@ const FormB = ({ addBlockchain, chain, difficulty, lastHash}) => {
                     <input className={styles.myinput, styles.inputContainer} onChange={(evt)=> setTimestamp(evt.target.data)} type="date" placeholder="dd-mm-yyyy" id="date" name="date"/><br></br>
                     <label>Amount:</label><br/>
                     <input className={styles.myinput, styles.inputContainer}  onChange={(evt)=> setData(evt.target.amount)} type="number" step="0.01" id="amount" placeholder="$" name="amount"/><br></br>
-                    <input className={styles.mybtn} type="submit" onClick={()=> createBlock(data, timestamp, )}/>
+                    <input className={styles.mybtn} type="submit" onClick={(evt)=> {
+                        createBlock(data, timestamp)
+                        evt.preventDefault()
+                        }}/>
                 </form>
             </div>
         </>
