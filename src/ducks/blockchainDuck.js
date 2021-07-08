@@ -15,8 +15,15 @@ export default new Duck({
     
     if (action.type === duck.types.ADD_BLOCKCHAIN) {
       const block = new Block(action.timestamp, {amount: action.data}) 
-      const bchain = state.blockchain.addBlock(block)
-      return { blockchain:  bchain }
+      state.blockchain.addBlock(block)
+      
+      let newblockchain = new Blockchain()
+      
+      state.blockchain.chain.forEach((block) => {
+        newblockchain.chain.push(block) 
+      });
+
+      return { blockchain:  newblockchain }
     } else {
       return state;
     }

@@ -19,8 +19,10 @@ const TableB = ({blockchain}) => {
                 </thead>
                 <tbody>
                     <tr>
-                    {Object.values(blockchain).map((item) => {
-                        <td>{item}</td>
+                    {blockchain.chain.map((item) => {
+                        return(
+                            <td> {item.index}</td>
+                        )
                     })}
                     </tr>
                 </tbody>
