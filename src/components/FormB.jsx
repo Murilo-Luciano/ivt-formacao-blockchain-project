@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux"
 import styles from '../assets/style.module.css';
-import BlockchainDuck from '../ducks/BlockchainDuck';
+import BlockchainDuck from '../ducks/blockchainDuck';
 import PropTypes from "prop-types";
 
 const FormB = ({addBlockchain}) => {

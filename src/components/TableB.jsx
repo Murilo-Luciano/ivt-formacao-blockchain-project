@@ -18,13 +18,20 @@ const TableB = ({blockchain}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    
                     {blockchain.chain.map((item) => {
                         return(
-                            <td> {item.index}</td>
+                            <tr>
+                                {console.log(item)}
+                                <td> {item.index}</td>
+                                <td>{item.timestamp}</td>
+                                <td> {item.data}</td>
+                                <td>{item.hash}</td>
+                                <td>{item.index}</td>
+                            </tr>
                         )
                     })}
-                    </tr>
+                    
                 </tbody>
             </table>
         </React.Fragment>
