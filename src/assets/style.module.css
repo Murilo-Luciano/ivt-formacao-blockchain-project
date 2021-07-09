@@ -23,6 +23,7 @@ tr:hover {
 }
 .myform{
     margin-top: 16px;
+    margin-bottom: 16px;
 }
 .mytable{
     margin-left: auto;
@@ -35,6 +36,8 @@ tr:hover {
 }
 .myForm{
     margin-left: 5%;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 .myinput {
     box-sizing: border-box;
