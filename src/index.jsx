@@ -1,7 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Provider} from 'react-redux'
 
-ReactDOM.render(
-    <h1>Olá React</h1>,
-    document.getElementById("react-root-test")
-)
+import { App } from './components'
+import store from './ducks'
+
+const MainApp =(
+    <Provider store={store}>
+        <App />
+    </Provider>
+) 
+
+ReactDOM.render(MainApp, document.getElementById('root'))

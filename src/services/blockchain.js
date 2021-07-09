@@ -15,6 +15,7 @@ class Blockchain{
             newBlock.index = this.chain.length
             newBlock.previousHash = '0'
             newBlock.hash = newBlock.calculateHash()
+            this.difficulty = dif
             this.lastHash = newBlock.hash
             this.chain.push(newBlock)
         }
@@ -50,7 +51,6 @@ class Blockchain{
             if(currentBlock.previousHash !== previousBlock.hash){
                 return false
             }
-
         }
         return true
     }
