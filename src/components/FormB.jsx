@@ -42,7 +42,7 @@ const FormB = ({addBlockchain}) => {
                     <button className={styles.mybtn}  onClick={(evt)=> {
                         evt.preventDefault()
                         createBlock(data, timestamp)
-                        }}/>
+                        }}>Submit</button>
                 </form>
             </div>
         </>
